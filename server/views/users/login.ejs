@@ -1,0 +1,26 @@
+<% layout("/layouts/boilerPlate.ejs") %>
+
+<div class="login-row">
+    <div class="mt-5 shadow-sm login-form" style="padding: 1rem;">
+        <h4><b>Login</b></h4>
+        <form action="/login"  method="post" class="needs-validation mt-5" novalidate> 
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input name="username" placeholder="Enter username" class="form-control" id="username" type="text" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide a Username.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" placeholder="Enter password" class="form-control" id="password" type="password" autocomplete="off" required>
+                <div class="invalid-feedback">Please provide a Password.</div>
+            </div>
+            <button class="btn btn-success" style="margin-left: 10.5rem;">Login</button>
+        </form>
+        <p style="margin: 1rem; opacity: .8;">----------------   Or connect with   ----------------</p>
+        <a href="/auth/google"><button class="btn btn-danger" style="margin-left: 8.9rem;">Google Login</button></a>
+
+    </div>
+    <div class="login-image">
+        <img src="/assets/login.png" alt="">
+    </div>
+</div>
