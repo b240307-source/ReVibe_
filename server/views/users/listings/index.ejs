@@ -1,0 +1,83 @@
+<% layout("/layouts/boilerPlate") %>
+<div id="filters">
+  <div class="filter">
+    <a href="/listings/filter/trending">
+      <div><i class="fa-solid fa-fire"></i></div>
+      Trending!
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/rooms">
+      <div><i class="fa-solid fa-bed"></i></div>
+      Rooms
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/kitchen">
+      <div><i class="fa-solid fa-utensils"></i></div>
+      Kitchen
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/digital">
+      <div><i class="fa-solid fa-camera-retro"></i></div>
+      Digital items
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/mobile">
+      <div><i class="fa-solid fa-mobile"></i></div>
+      Mobile phones
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/home">
+      <div><i class="fa-solid fa-couch"></i></div>
+      Home appliences
+    </a>
+  </div>
+  <div class="filter">
+    <a href="/listings/filter/vehicle">
+      <div><i class="fa-solid fa-car"></i></div>
+      Vehicles
+    </a>
+  </div>
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input class="form-check-input"  type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+      <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+    </div>
+  </div>
+</div><br>
+<h1>All Listings</h1>
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-3">
+    <% for(listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>">
+            <div class="card index-card shadow-sm" data-aos="fade-right">
+                <img src=<%= listing.image.url %> class="card-img-top" alt="listingImage" style="height:20rem; border-radius:15px;">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <b><%= listing.title %></b><br>
+                        &#8377;<%= listing.price.toLocaleString("en-IN") %>
+                        <i class="taxInfo">&nbsp;+&nbsp;<%= listing.tax %>% gst</i>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <% } %>
+</div>
+
+<script>
+    let taxShow = document.getElementById("flexSwitchCheckDefault");
+    taxShow.addEventListener("click", ()=>{
+        let taxInfo = document.getElementsByClassName("taxInfo");
+        for(tax of taxInfo) {
+            if(taxShow.checked) {
+                tax.style.display = "inline";
+            } else {
+                tax.style.display = "none";
+            }
+        }
+    });
+</script>
